@@ -885,20 +885,20 @@ function __wbg_adapter_121(arg0, arg1, arg2, arg3) {
 
 async function __wbg_load(module, imports) {
   if (typeof Response === 'function' && module instanceof Response) {
-    if (typeof WebAssembly.instantiateStreaming === 'function') {
-      try {
-        return await WebAssembly.instantiateStreaming(module, imports);
-      } catch (e) {
-        if (module.headers.get('Content-Type') != 'application/wasm') {
-          console.warn(
-            '`WebAssembly.instantiateStreaming` failed because your server does not serve wasm with `application/wasm` MIME type. Falling back to `WebAssembly.instantiate` which is slower. Original error:\n',
-            e
-          );
-        } else {
-          throw e;
-        }
-      }
-    }
+    // if (typeof WebAssembly.instantiateStreaming === 'function') {
+    //   try {
+    //     return await WebAssembly.instantiateStreaming(module, imports);
+    //   } catch (e) {
+    //     if (module.headers.get('Content-Type') != 'application/wasm') {
+    //       console.warn(
+    //         '`WebAssembly.instantiateStreaming` failed because your server does not serve wasm with `application/wasm` MIME type. Falling back to `WebAssembly.instantiate` which is slower. Original error:\n',
+    //         e
+    //       );
+    //     } else {
+    //       throw e;
+    //     }
+    //   }
+    // }
 
     const bytes = await module.arrayBuffer();
     return await WebAssembly.instantiate(bytes, imports);
