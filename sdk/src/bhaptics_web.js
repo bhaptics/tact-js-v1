@@ -47,7 +47,10 @@ if (typeof TextDecoder !== 'undefined') {
 let cachedUint8ArrayMemory0 = null;
 
 function getUint8ArrayMemory0() {
-  if (cachedUint8ArrayMemory0 === null || cachedUint8ArrayMemory0.byteLength === 0) {
+  if (
+    cachedUint8ArrayMemory0 === null ||
+    cachedUint8ArrayMemory0.byteLength === 0
+  ) {
     cachedUint8ArrayMemory0 = new Uint8Array(wasm.memory.buffer);
   }
   return cachedUint8ArrayMemory0;
@@ -55,7 +58,9 @@ function getUint8ArrayMemory0() {
 
 function getStringFromWasm0(ptr, len) {
   ptr = ptr >>> 0;
-  return cachedTextDecoder.decode(getUint8ArrayMemory0().subarray(ptr, ptr + len));
+  return cachedTextDecoder.decode(
+    getUint8ArrayMemory0().subarray(ptr, ptr + len)
+  );
 }
 
 let WASM_VECTOR_LEN = 0;
@@ -285,11 +290,23 @@ export function run_bhaptics_player(try_launch) {
  * @returns {Promise<boolean>}
  */
 export function registry_and_initialize(app_id, api_key, init_json_string) {
-  const ptr0 = passStringToWasm0(app_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    app_id,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
-  const ptr1 = passStringToWasm0(api_key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr1 = passStringToWasm0(
+    api_key,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len1 = WASM_VECTOR_LEN;
-  const ptr2 = passStringToWasm0(init_json_string, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr2 = passStringToWasm0(
+    init_json_string,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len2 = WASM_VECTOR_LEN;
   const ret = wasm.registry_and_initialize(ptr0, len0, ptr1, len1, ptr2, len2);
   return takeObject(ret);
@@ -302,16 +319,46 @@ export function registry_and_initialize(app_id, api_key, init_json_string) {
  * @param {string} init_json_string
  * @returns {Promise<boolean>}
  */
-export function remote_registry_and_initialize(host, app_id, api_key, init_json_string) {
-  const ptr0 = passStringToWasm0(host, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+export function remote_registry_and_initialize(
+  host,
+  app_id,
+  api_key,
+  init_json_string
+) {
+  const ptr0 = passStringToWasm0(
+    host,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
-  const ptr1 = passStringToWasm0(app_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr1 = passStringToWasm0(
+    app_id,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len1 = WASM_VECTOR_LEN;
-  const ptr2 = passStringToWasm0(api_key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr2 = passStringToWasm0(
+    api_key,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len2 = WASM_VECTOR_LEN;
-  const ptr3 = passStringToWasm0(init_json_string, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr3 = passStringToWasm0(
+    init_json_string,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len3 = WASM_VECTOR_LEN;
-  const ret = wasm.remote_registry_and_initialize(ptr0, len0, ptr1, len1, ptr2, len2, ptr3, len3);
+  const ret = wasm.remote_registry_and_initialize(
+    ptr0,
+    len0,
+    ptr1,
+    len1,
+    ptr2,
+    len2,
+    ptr3,
+    len3
+  );
   return takeObject(ret);
 }
 
@@ -321,9 +368,17 @@ export function remote_registry_and_initialize(host, app_id, api_key, init_json_
  * @returns {Promise<void>}
  */
 export function retry_initialize(app_id, api_key) {
-  const ptr0 = passStringToWasm0(app_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    app_id,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
-  const ptr1 = passStringToWasm0(api_key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr1 = passStringToWasm0(
+    api_key,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len1 = WASM_VECTOR_LEN;
   const ret = wasm.retry_initialize(ptr0, len0, ptr1, len1);
   return takeObject(ret);
@@ -351,7 +406,11 @@ export function close() {
  * @returns {Promise<void>}
  */
 export function set_device_vsm(address, vsm) {
-  const ptr0 = passStringToWasm0(address, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    address,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.set_device_vsm(ptr0, len0, vsm);
   return takeObject(ret);
@@ -362,7 +421,11 @@ export function set_device_vsm(address, vsm) {
  * @returns {Promise<void>}
  */
 export function swap_position(address) {
-  const ptr0 = passStringToWasm0(address, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    address,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.swap_position(ptr0, len0);
   return takeObject(ret);
@@ -382,7 +445,11 @@ export function is_bhaptics_device_connected(position) {
  * @returns {Promise<void>}
  */
 export function ping(address) {
-  const ptr0 = passStringToWasm0(address, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    address,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.ping(ptr0, len0);
   return takeObject(ret);
@@ -401,7 +468,11 @@ export function ping_all() {
  * @returns {Promise<number>}
  */
 export function get_event_time(event_name) {
-  const ptr0 = passStringToWasm0(event_name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    event_name,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.get_event_time(ptr0, len0);
   return takeObject(ret);
@@ -445,7 +516,11 @@ export function is_playing_event_by_request_id(request_id) {
  * @returns {Promise<boolean>}
  */
 export function is_playing_event_by_event_id(event_id) {
-  const ptr0 = passStringToWasm0(event_id, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    event_id,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.is_playing_event_by_event_id(ptr0, len0);
   return takeObject(ret);
@@ -456,7 +531,11 @@ export function is_playing_event_by_event_id(event_id) {
  * @returns {Promise<number>}
  */
 export function play_event(event_name) {
-  const ptr0 = passStringToWasm0(event_name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    event_name,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.play_event(ptr0, len0);
   return takeObject(ret);
@@ -479,7 +558,11 @@ export function play_with_start_time(
   angle_x,
   offset_y
 ) {
-  const ptr0 = passStringToWasm0(key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    key,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.play_with_start_time(
     ptr0,
@@ -502,8 +585,19 @@ export function play_with_start_time(
  * @param {number} offset_y
  * @returns {Promise<void>}
  */
-export function play_without_result(key, position, intensity, duration_ratio, angle_x, offset_y) {
-  const ptr0 = passStringToWasm0(key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+export function play_without_result(
+  key,
+  position,
+  intensity,
+  duration_ratio,
+  angle_x,
+  offset_y
+) {
+  const ptr0 = passStringToWasm0(
+    key,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.play_without_result(
     ptr0,
@@ -523,7 +617,11 @@ export function play_without_result(key, position, intensity, duration_ratio, an
  * @returns {Promise<number>}
  */
 export function play_position(key, position) {
-  const ptr0 = passStringToWasm0(key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    key,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.play_position(ptr0, len0, position);
   return takeObject(ret);
@@ -546,7 +644,11 @@ export function play_position_with_parameter(
   angle_x,
   offset_y
 ) {
-  const ptr0 = passStringToWasm0(key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    key,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.play_position_with_parameter(
     ptr0,
@@ -570,8 +672,20 @@ export function play_position_with_parameter(
  * @param {number} max_count
  * @returns {Promise<number>}
  */
-export function play_loop(key, intensity, duration_ratio, angle_x, offset_y, interval, max_count) {
-  const ptr0 = passStringToWasm0(key, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+export function play_loop(
+  key,
+  intensity,
+  duration_ratio,
+  angle_x,
+  offset_y,
+  interval,
+  max_count
+) {
+  const ptr0 = passStringToWasm0(
+    key,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.play_loop(
     ptr0,
@@ -589,7 +703,10 @@ export function play_loop(key, intensity, duration_ratio, angle_x, offset_y, int
 let cachedUint32ArrayMemory0 = null;
 
 function getUint32ArrayMemory0() {
-  if (cachedUint32ArrayMemory0 === null || cachedUint32ArrayMemory0.byteLength === 0) {
+  if (
+    cachedUint32ArrayMemory0 === null ||
+    cachedUint32ArrayMemory0.byteLength === 0
+  ) {
     cachedUint32ArrayMemory0 = new Uint32Array(wasm.memory.buffer);
   }
   return cachedUint32ArrayMemory0;
@@ -617,7 +734,10 @@ export function play_dot(position, duration_millis, motor_values) {
 let cachedFloat32ArrayMemory0 = null;
 
 function getFloat32ArrayMemory0() {
-  if (cachedFloat32ArrayMemory0 === null || cachedFloat32ArrayMemory0.byteLength === 0) {
+  if (
+    cachedFloat32ArrayMemory0 === null ||
+    cachedFloat32ArrayMemory0.byteLength === 0
+  ) {
     cachedFloat32ArrayMemory0 = new Float32Array(wasm.memory.buffer);
   }
   return cachedFloat32ArrayMemory0;
@@ -644,7 +764,16 @@ export function play_path(position, duration_millis, x, y, intensity) {
   const len1 = WASM_VECTOR_LEN;
   const ptr2 = passArray32ToWasm0(intensity, wasm.__wbindgen_malloc);
   const len2 = WASM_VECTOR_LEN;
-  const ret = wasm.play_path(position, duration_millis, ptr0, len0, ptr1, len1, ptr2, len2);
+  const ret = wasm.play_path(
+    position,
+    duration_millis,
+    ptr0,
+    len0,
+    ptr1,
+    len1,
+    ptr2,
+    len2
+  );
   return takeObject(ret);
 }
 
@@ -663,7 +792,16 @@ export function play_glove(position, motors, playtimes, shapes, repeat_count) {
   const len1 = WASM_VECTOR_LEN;
   const ptr2 = passArray32ToWasm0(shapes, wasm.__wbindgen_malloc);
   const len2 = WASM_VECTOR_LEN;
-  const ret = wasm.play_glove(position, ptr0, len0, ptr1, len1, ptr2, len2, repeat_count);
+  const ret = wasm.play_glove(
+    position,
+    ptr0,
+    len0,
+    ptr1,
+    len1,
+    ptr2,
+    len2,
+    repeat_count
+  );
   return takeObject(ret);
 }
 
@@ -672,7 +810,11 @@ export function play_glove(position, motors, playtimes, shapes, repeat_count) {
  * @returns {Promise<void>}
  */
 export function pause(event) {
-  const ptr0 = passStringToWasm0(event, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    event,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.pause(ptr0, len0);
   return takeObject(ret);
@@ -683,7 +825,11 @@ export function pause(event) {
  * @returns {Promise<void>}
  */
 export function resume(event) {
-  const ptr0 = passStringToWasm0(event, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    event,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.resume(ptr0, len0);
   return takeObject(ret);
@@ -703,7 +849,11 @@ export function stop_by_request_id(request_id) {
  * @returns {Promise<void>}
  */
 export function stop_by_event_name(event_name) {
-  const ptr0 = passStringToWasm0(event_name, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+  const ptr0 = passStringToWasm0(
+    event_name,
+    wasm.__wbindgen_malloc,
+    wasm.__wbindgen_realloc
+  );
   const len0 = WASM_VECTOR_LEN;
   const ret = wasm.stop_by_event_name(ptr0, len0);
   return takeObject(ret);
@@ -988,7 +1138,11 @@ function __wbg_get_imports() {
     const ret = getObject(arg0).buffer;
     return addHeapObject(ret);
   };
-  imports.wbg.__wbg_newwithbyteoffsetandlength_8a2cb9ca96b27ec9 = function (arg0, arg1, arg2) {
+  imports.wbg.__wbg_newwithbyteoffsetandlength_8a2cb9ca96b27ec9 = function (
+    arg0,
+    arg1,
+    arg2
+  ) {
     const ret = new Uint8Array(getObject(arg0), arg1 >>> 0, arg2 >>> 0);
     return addHeapObject(ret);
   };
@@ -1009,7 +1163,11 @@ function __wbg_get_imports() {
   };
   imports.wbg.__wbindgen_debug_string = function (arg0, arg1) {
     const ret = debugString(getObject(arg1));
-    const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const ptr1 = passStringToWasm0(
+      ret,
+      wasm.__wbindgen_malloc,
+      wasm.__wbindgen_realloc
+    );
     const len1 = WASM_VECTOR_LEN;
     getDataViewMemory0().setInt32(arg0 + 4 * 1, len1, true);
     getDataViewMemory0().setInt32(arg0 + 4 * 0, ptr1, true);
@@ -1061,9 +1219,15 @@ function __wbg_finalize_init(instance, module) {
 function initSync(module) {
   if (wasm !== undefined) return wasm;
 
-  if (typeof module !== 'undefined' && Object.getPrototypeOf(module) === Object.prototype)
+  if (
+    typeof module !== 'undefined' &&
+    Object.getPrototypeOf(module) === Object.prototype
+  )
     ({ module } = module);
-  else console.warn('using deprecated parameters for `initSync()`; pass a single object instead');
+  else
+    console.warn(
+      'using deprecated parameters for `initSync()`; pass a single object instead'
+    );
 
   const imports = __wbg_get_imports();
 

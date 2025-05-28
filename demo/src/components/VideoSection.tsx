@@ -30,7 +30,10 @@ export default function VideoSection() {
             height={'100%'}
             onPlay={async () => {
               setPlaying(true);
-              HapticDriver.play({ eventKey: EVENT_KEY, startTime: currentTime * 1000 });
+              HapticDriver.play({
+                eventKey: EVENT_KEY,
+                startTime: currentTime * 1000,
+              });
             }}
             onProgress={({ playedSeconds }) => setCurrentTime(playedSeconds)}
             onPause={async () => {
@@ -51,8 +54,15 @@ export default function VideoSection() {
           />
         </div>
         <div className="flex bg-neutral-100 p-3 gap-1">
-          <button className="p-3 hover:bg-neutral-200 rounded" onClick={() => setPlaying(!playing)}>
-            {playing ? <FaPause className="size-4" /> : <FaPlay className="size-4" />}
+          <button
+            className="p-3 hover:bg-neutral-200 rounded"
+            onClick={() => setPlaying(!playing)}
+          >
+            {playing ? (
+              <FaPause className="size-4" />
+            ) : (
+              <FaPlay className="size-4" />
+            )}
           </button>
           <button
             className="p-3 hover:bg-neutral-200 rounded"
@@ -61,7 +71,8 @@ export default function VideoSection() {
               setCurrentTime(0);
               player?.seekTo(0);
               await HapticDriver.stop(EVENT_KEY);
-            }}>
+            }}
+          >
             <FaStop className="size-4" />
           </button>
 
@@ -80,7 +91,11 @@ export default function VideoSection() {
                   const width = rect.width;
                   const time = (x / width) * (player?.getDuration() ?? 1);
 
-                  const availableTime = clamp(time, 0, player?.getDuration() ?? 1);
+                  const availableTime = clamp(
+                    time,
+                    0,
+                    player?.getDuration() ?? 1
+                  );
                   setCurrentTime(availableTime);
                   player?.seekTo(availableTime);
                 }
@@ -91,7 +106,8 @@ export default function VideoSection() {
                   setPlaying(true);
                 }
                 e.currentTarget.releasePointerCapture(e.pointerId);
-              }}>
+              }}
+            >
               <div
                 style={{
                   width: `${(currentTime / (player?.getDuration() ?? 1)) * 100}%`,

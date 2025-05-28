@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "postbuild": "cp ../README.md ./README.md",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",

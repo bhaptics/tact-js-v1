@@ -29,8 +29,16 @@ export default function PathModeSection() {
   const playPath = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.buttons !== 1) return;
 
-    const x = linearScale(e.nativeEvent.offsetX, e.currentTarget.clientWidth, 0);
-    const y = linearScale(e.nativeEvent.offsetY, e.currentTarget.clientHeight, 0);
+    const x = linearScale(
+      e.nativeEvent.offsetX,
+      e.currentTarget.clientWidth,
+      0
+    );
+    const y = linearScale(
+      e.nativeEvent.offsetY,
+      e.currentTarget.clientHeight,
+      0
+    );
 
     const clapmedX = clamp(x, 0, 1);
     const clampedY = clamp(y, 0, 1);
@@ -67,7 +75,9 @@ export default function PathModeSection() {
   };
 
   return (
-    <section className={`flex flex-col select-none items-start gap-2 transition-opacity`}>
+    <section
+      className={`flex flex-col select-none items-start gap-2 transition-opacity`}
+    >
       <h3>4. Path Mode Test</h3>
       <p>
         {`If you have a TactSuit connected, you can test the motors by dragging over the
@@ -103,7 +113,8 @@ export default function PathModeSection() {
           className="flex w-full justify-center divide-x divide-gray-400"
           onPointerDown={activateDrawing}
           onPointerUp={deactivateDrawing}
-          onPointerMove={draw}>
+          onPointerMove={draw}
+        >
           <div className="flex-1 h-[416px] bg-gray-50 cursor-crosshair relative">
             <Indicator />
           </div>

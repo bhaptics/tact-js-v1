@@ -66,22 +66,33 @@ function Event({ eventKey }: { eventKey: EventKey }) {
     <li className="relative rounded flex items-center pl-2 p-1 justify-between bg-black">
       <span>{eventKey.key}</span>
       <div className="flex items-center">
-        <span className="text-xs mr-2">{`${currentTime} / ${eventKey.durationMillis}`} </span>
+        <span className="text-xs mr-2">
+          {`${currentTime} / ${eventKey.durationMillis}`}{' '}
+        </span>
         <button
           onClick={() => playEvent(eventKey.key)}
-          className=" hover:bg-neutral-700 cursor-pointer  text-neutral-white size-8 items-center justify-center flex rounded">
-          {currentTime !== 0 ? <FaPause className="size-3" /> : <FaPlay className="size-3" />}
+          className=" hover:bg-neutral-700 cursor-pointer  text-neutral-white size-8 items-center justify-center flex rounded"
+        >
+          {currentTime !== 0 ? (
+            <FaPause className="size-3" />
+          ) : (
+            <FaPlay className="size-3" />
+          )}
         </button>
         <button
           onClick={() => stopEvent(eventKey.key)}
-          className=" hover:bg-neutral-700 cursor-pointer text-neutral-white size-8 items-center justify-center flex rounded">
+          className=" hover:bg-neutral-700 cursor-pointer text-neutral-white size-8 items-center justify-center flex rounded"
+        >
           <FaStop className="size-3" />
         </button>
       </div>
       <div
         className="absolute pointer-events-none inset-0 w-full mix-blend-difference bg-white"
         style={{
-          width: currentTime !== 0 ? `${(currentTime / eventKey.durationMillis) * 100}%` : '0%',
+          width:
+            currentTime !== 0
+              ? `${(currentTime / eventKey.durationMillis) * 100}%`
+              : '0%',
           borderRadius: '0.25rem',
         }}
       />

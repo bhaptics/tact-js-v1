@@ -20,7 +20,9 @@ export default function DotModeSection() {
   };
 
   return (
-    <section className={`flex flex-col items-start gap-2 transition-opacity select-none`}>
+    <section
+      className={`flex flex-col items-start gap-2 transition-opacity select-none`}
+    >
       <h3>3. Dot Mode Test</h3>
       <p className="">
         {`If you have a TactSuit connected, you can test the motors by clicking the buttons below.
@@ -54,8 +56,10 @@ export default function DotModeSection() {
         <div className="flex-1 grid grid-cols-4 gap-px bg-gray-200">
           {Array.from({ length: 16 }).map((_, index) => (
             <button
+              key={index}
               className="cursor-pointer bg-gray-50 py-10  hover:bg-gray-100  text-gray-400 text-sm"
-              onClick={() => handleClick(index)(true)}>
+              onClick={() => handleClick(index)(true)}
+            >
               {index}
             </button>
           ))}
@@ -63,8 +67,10 @@ export default function DotModeSection() {
         <div className="flex-1  grid grid-cols-4 gap-px bg-gray-200">
           {motors.slice(16, 32).map((_, index) => (
             <button
+              key={index + 16}
               className="cursor-pointer bg-gray-50 py-10  hover:bg-gray-100  text-gray-400 text-sm"
-              onClick={() => handleClick(index)(false)}>
+              onClick={() => handleClick(index)(false)}
+            >
               {index + 20}
             </button>
           ))}

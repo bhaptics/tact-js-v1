@@ -49,13 +49,15 @@ export class Timer {
 
   private static unregister = async () => {
     try {
-      navigator.serviceWorker.getRegistration('./serviceworker.js').then((r) => {
-        if (r) {
-          r.active?.postMessage('stop');
-          r.unregister();
-          // console.log("unregistered");
-        }
-      });
+      navigator.serviceWorker
+        .getRegistration('./serviceworker.js')
+        .then((r) => {
+          if (r) {
+            r.active?.postMessage('stop');
+            r.unregister();
+            // console.log("unregistered");
+          }
+        });
     } catch (e) {
       console.log('unregister failed');
     }
